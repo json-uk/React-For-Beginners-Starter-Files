@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 {/* Stateless functional component: when you are only rendering... */}
-const Header = ({tagline}) => (
+const Header = props => (
   <header className="top">
     <h1>
       Catch
@@ -12,9 +13,12 @@ const Header = ({tagline}) => (
       Day
     </h1>
     <h3 className="tagline">
-      <span>{tagline}</span>
+      <span>{props.tagline}</span>
     </h3>
   </header>
 );
 
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired
+};
 export default Header;

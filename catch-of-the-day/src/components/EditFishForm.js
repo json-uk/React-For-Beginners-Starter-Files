@@ -1,8 +1,23 @@
 import React, { Fragment } from "react";
 import AddFishForm from "./AddFishForm";
 import StatusOptions from "./StatusOptions";
+import PropTypes from 'prop-types';
 
 class EditFishForm extends React.Component {
+
+  static propTypes = {
+    fish: PropTypes.shape({
+      name: PropTypes.string,
+      status: PropTypes.string,
+      desc: PropTypes.string,
+      image: PropTypes.string,
+      price: PropTypes.number
+    }),
+    updateFish: PropTypes.func,
+    deleteFish: PropTypes.func,
+    index: PropTypes.string
+  }
+
   handleChange = event => {
     //1. Take a copy of the curremt fish
     const updatedFish = {
@@ -53,6 +68,7 @@ class EditFishForm extends React.Component {
             value={this.props.fish.image}
           />
           <button onClick={() => this.props.deleteFish(this.props.index)}>Remove Fish</button>
+
         </div>
       </Fragment>
     );
